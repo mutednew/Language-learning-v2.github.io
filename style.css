@@ -1,0 +1,363 @@
+body {
+    height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-family: "Saira Condensed", sans-serif;
+    font-size: 26px;
+
+    background: url(image/bg01.jpg) no-repeat;
+    background-position: 0 50%;
+    background-size: cover;
+
+    margin: 0;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+h1, h2, h3, p {
+    margin: 0;
+}
+
+/* Wrapper */
+.wrapper {
+    max-width: 1100px;
+    width: 90%;
+    height: 80%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+    background-color: rgba(238, 238, 238, .2);
+    border: 2px solid rgba(0, 0, 0, .3);
+    border-radius: 30px;
+    backdrop-filter: blur(5px);
+
+    padding: 50px;
+}
+
+.learning-card {
+    width: 70%;
+    height: 70%;
+}
+
+.card {
+    cursor: pointer;
+    user-select: none;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+    height: 100%;
+
+    font-size: 38px;
+    font-weight: 600;
+
+    background-color: #eee;
+    border: 1px solid #111;
+    border-radius: 20px;
+}
+
+.choose-lvl {
+    max-width: 170px;
+    width: 90%;
+
+    cursor: pointer;
+    font-size: 24px;
+
+    background-color: #537ffa;
+    border-radius: 10px;
+    border: none;
+
+    margin-top: 20px;
+    padding: 8px 0;
+}
+
+.counter {
+    position: relative;
+
+    width: 15%;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin: 20px;
+}
+
+.num {
+    font-size: 26px;
+    margin: 0;
+}
+
+.left {
+    width: 32px;
+    height: 32px;
+
+    text-decoration: none;
+
+    background: url(image/left.png);
+    background-size: cover;
+}
+
+.right {
+    width: 32px;
+    height: 32px;
+
+    text-decoration: none;
+
+    background: url(image/right.png);
+    background-size: cover;
+}
+
+.translate {
+    width: 25%;
+    height: 40px;
+
+    font-size: 22px;
+
+    outline: none;
+    border: none;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.check-block {
+    display: flex;
+}
+
+.correct {
+    background-color: rgba(9, 216, 37, 0.5);
+    margin-right: 80px;
+    padding: 0 10px;
+}
+
+.incorrect {
+    background-color: rgba(216, 9, 9, 0.5);
+    padding: 0 5px;
+}
+
+/* Level */
+.difficulty {
+    visibility: hidden;
+    opacity: 0;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 999;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: justify;
+
+    width: 100%;
+    height: 100%;
+
+    background-color: rgba(100, 122, 133, 0.6);
+}
+
+.choise-block {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    align-self: flex-start;
+
+    max-width: 500px;
+    width: 90%;
+    
+    background-color: #e7e7e7;
+    border: 2px solid #111;
+    border-radius: 20px;
+    padding: 20px 30px;
+
+    transform: translateY(-120%);
+    transition: .3s ease;
+}
+
+/* Modal */
+.modal {
+    visibility: hidden;
+    opacity: 0;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 999;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: justify;
+
+    width: 100%;
+    height: 100%;
+
+    background-color: rgba(100, 122, 133, 0.6);
+}
+
+.results {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    align-self: flex-start;
+
+    max-width: 500px;
+    width: 90%;
+    
+    background-color: #e7e7e7;
+    border: 2px solid #111;
+    border-radius: 20px;
+    padding: 20px 30px;
+
+    transform: translateY(-120%);
+    transition: .3s ease;
+}
+
+.results h1 {
+    font-size: 38px;
+}
+
+.restart {
+    cursor: pointer;
+    align-self: flex-end;
+    font-size: 24px;
+
+    background-color: #537ffa;
+    border-radius: 10px;
+    border: none;
+
+    margin-left: 30px;
+    padding: 8px 20px;
+}
+
+@media(max-width: 992px) {
+    .wrapper {
+        width: 90%;
+        min-width: 0;
+    }
+
+    .learning-card {
+        width: 60%;
+        height: 60%;
+    }
+
+    .counter {
+        width: 100%;
+        max-width: 140px;
+    }
+
+    .translate {
+        width: 100%;
+        max-width: 250px;
+    }
+}
+
+@media(max-width: 768px) {
+    .wrapper {
+        height: 60%;
+    }
+
+    .learning-card {
+        width: 50%;
+        height: 40%;
+    }
+
+    .card {
+        font-size: 28px;
+    }
+}
+
+@media(max-width: 576px) {
+    .wrapper {
+        height: 50%;
+    }
+
+    .learning-card {
+        width: 60%;
+        height: 30%;
+    }
+
+    .card {
+        text-align: center;
+        font-size: 24px;
+
+        padding: 10px;
+    }
+
+    .choose-lvl {
+        max-width: 130px;
+
+        font-size: 18px;
+        padding: 5px 0;
+    }
+
+    .counter {
+        max-width: 110px;
+    }
+
+    .num {
+        font-size: 20px;
+    }
+
+    .left, .right {
+        width: 24px;
+        height: 24px;
+    }
+
+    .translate {
+        font-size: 18px;
+
+        padding: 5px;
+    }
+
+    .correct {
+        margin-right: 20px;
+    }
+
+    .correct, .incorrect {
+        font-size: 20px;
+        text-align: center;
+    }
+
+    .results h1 {
+        font-size: 30px;
+    }
+
+    .choise-block h1 {
+        font-size: 38px;
+    }
+    
+    .choise label {
+        font-size: 20px;
+    }
+
+    .recommendations, 
+    .summary, 
+    #resultsText, 
+    #incorrectWords, .restart {
+        font-size: 20px;
+    }   
+}
+
+@media(max-width: 320px) {
+    .learning-card {
+        width: 80%;
+    }
+
+    .recommendations, 
+    .summary, 
+    #resultsText, 
+    #incorrectWords, .restart {
+        font-size: 18px;
+    } 
+}

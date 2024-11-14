@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dictionary</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="difficulty">
+        <div class="choise-block">
+            <h1>Select level:</h1>
+
+            <div class="choise">
+                <input type="radio" name="lvl" value="A1">
+                <label for="lvl">Elementary level</label>
+            </div>
+
+            <div class="choise">
+                <input type="radio" name="lvl" value="B1">
+                <label for="lvl">Intermediate level</label>
+            </div>
+
+            <div class="choise">
+                <input type="radio" name="lvl" value="B2">
+                <label for="lvl">High level</label>
+            </div>
+        </div>
+    </div>
+    
+    <div class="wrapper">
+        <div class="learning-card">
+            <div class="card">Choose your level</div>
+        </div>
+
+        <button class="choose-lvl">Choose level</button>
+
+        <div class="counter">
+            <a href="#" class="left"></a>
+
+            <h1 class="num">0 / 10</h1>
+
+            <a href="#" class="right"></a>
+        </div>
+
+        <input type="text" class="translate" placeholder="Write translate">
+
+        <div class="check-block">
+            <p class="correct">Correct: 0</p>
+            <p class="incorrect">Incorrect: 0</p>
+        </div>
+    </div>
+
+    <div class="modal">
+        <div class="results">
+            <h1>Completed</h1>
+            <p class="recommendations"></p>
+            <p class="summary"></p>
+            <p id="resultsText">Your English language level is: </p>
+            <p id="incorrectWords"></p>
+            
+            <button class="restart">Try again</button>
+        </div>
+    </div>    
+
+    <script src="jquery-3.7.1.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

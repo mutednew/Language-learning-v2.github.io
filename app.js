@@ -74,6 +74,17 @@ $(function() {
             loadNextWord();
         });
     }
+    
+    function reset() {
+        currentCount = 0;
+        correctCount = 0;
+        incorrectCount = 0;
+        correctCountElem.text(`Correct: ${correctCount}`);
+        incorrectCountElem.text(`Incorrect: ${incorrectCount}`);
+        counter.text(`${currentCount + 1} / 10`);
+        inputVal.val('');
+        difficulty.prop('checked', false);
+    }
 
     buttonLvl.on('click', () => {
         chooseDifficulty();
@@ -85,16 +96,6 @@ $(function() {
             [array[i], array[j]] = [array[j], array[i]];
         }
         return array;
-    }
-
-    function reset() {
-        currentCount = 0;
-        correctCount = 0;
-        incorrectCount = 0;
-        correctCountElem.text(`Correct: ${correctCount}`);
-        incorrectCountElem.text(`Incorrect: ${incorrectCount}`);
-        counter.text(`${currentCount + 1} / 10`);
-        inputVal.val('');
     }
 
     function showResults() {
@@ -168,10 +169,25 @@ $(function() {
         loadNextWord();
     });
 
+    let answerStatus = [].fill(null);
+
     $('.left').on('click', (event) => {
         event.preventDefault();
+    
         if (currentCount > 0) {
             currentCount--;
+    
+            if (answerStatus[currentCount] === true) {
+                correctCount--;
+            } else if (answerStatus[currentCount] === false) {
+                incorrectCount--;
+            }
+    
+            answerStatus[currentCount] = null;
+    
+            correctCountElem.text(`Correct: ${correctCount}`);
+            incorrectCountElem.text(`Incorrect: ${incorrectCount}`);
+    
             loadNextWord();
         }
     });
@@ -180,18 +196,21 @@ $(function() {
         if (currentCount < 10) {
             if (event.which === 13 && currentWord) {
                 const userTranslation = inputVal.val().trim();
+                
                 if (userTranslation.toLowerCase() === currentWord.ua.toLowerCase()) {
                     correctCount++;
+                    answerStatus[currentCount] = true;
                 } else {
                     incorrectCount++;
+                    answerStatus[currentCount] = false; 
                 }
-    
+
                 correctCountElem.text(`Correct: ${correctCount}`);
                 incorrectCountElem.text(`Incorrect: ${incorrectCount}`);
-    
+
                 currentCount++;
                 loadNextWord();
             }
         }
     });
-});
+    });

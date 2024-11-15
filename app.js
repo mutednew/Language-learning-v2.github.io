@@ -93,7 +93,7 @@ $(function() {
         incorrectCount = 0;
         correctCountElem.text(`Correct: ${correctCount}`);
         incorrectCountElem.text(`Incorrect: ${incorrectCount}`);
-        counter.html(`${currentCount + 1} / 10`);
+        counter.text(`${currentCount + 1} / 10`);
         inputVal.val('');
     }
 
@@ -134,7 +134,7 @@ $(function() {
             incorrectCount = 0;
             correctCountElem.text(`Correct: ${correctCount}`);
             incorrectCountElem.text(`Incorrect: ${incorrectCount}`);
-            counter.html(`${currentCount + 1} / 10`);
+            counter.text(`${currentCount + 1} / 10`);
             inputVal.val('');
             chooseDifficulty();
         });
